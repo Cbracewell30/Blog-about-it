@@ -1,5 +1,5 @@
-const User = require("./user.js");
-const Post = require("./post.js");
+const User = require("./User.js");
+const Post = require("./Post.js");
 const Comment = require("./comment");
 
 // Creating Model Associations
