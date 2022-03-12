@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require("sequelize");
 // password hashing
 const bcrypt = require("bcrypt");
-const { type } = require("os");
-const { before } = require("lodash");
+
+const sequelize = require("../config/connection");
 
 // Creating User model
 class User extends Model {

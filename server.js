@@ -1,25 +1,23 @@
-const path = require("path");
-// requiring express package
 const express = require("express");
-const session = require("express-session");
-// Creating local port
+// Add near the top of the file
+const controllerRoutes = require("./controllers");
+const req = require("express/lib/request");
 const PORT = process.env.PORT || 3001;
 const app = express();
-// creating connection
-const sequelize = require("./config/connection.js");
+
+const sequelize = require("./config/connection");
 
 // Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Add after Express middleware
-app.use("/api", apiRoutes);
+app.use(controllerRoutes);
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, "public")));
-
-app.use(require("./controllers/"));
+// Default response for any other request (Not Found)
+app.use((req, res) => {
+  res.status(404).end();
+});
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
