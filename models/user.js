@@ -1,10 +1,8 @@
 const { Model, DataTypes } = require("sequelize");
-// password hashing
 const bcrypt = require("bcrypt");
-
 const sequelize = require("../config/connection");
 
-// Creating User model
+// create our User model
 class User extends Model {
   // set up method to run on instance data (per user) to check password
   checkPassword(loginPw) {
@@ -12,15 +10,14 @@ class User extends Model {
   }
 }
 
-// Creating the users fields and columns
-
+// create fields/columns for User model
 User.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      autoIncrement: true,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true,
     },
     username: {
       type: DataTypes.STRING,
@@ -29,6 +26,7 @@ User.init(
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
       validate: {
         isEmail: true,
       },
@@ -43,12 +41,18 @@ User.init(
   },
   {
     hooks: {
-      // set up beforeCreate sets the value on the password beofre saving it.
-      // async function allows it to run simultaneously with other functions as a promise
-      async beforeCreate(newUser) {
-        // encrypting password. Salt rounds define the cost factor of the hashing.
-        newUser.password = await bcrypt.hash(newUser.password, 10);
-        return newUser;
+      // set up beforeCreate lifecycle "hook" functionality
+      async beforeCreate(newUserData) {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
+      },
+
+      async beforeUpdate(updatedUserData) {
+        updatedUserData.password = await bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
+        return updatedUserData;
       },
     },
     sequelize,

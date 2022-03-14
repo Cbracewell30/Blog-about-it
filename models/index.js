@@ -1,10 +1,9 @@
 const User = require("./User.js");
 const Post = require("./Post.js");
-const Comment = require("./comment");
+const Comment = require("./Comment");
 
 // Creating Model Associations
 
-// create associations
 User.hasMany(Post, {
   foreignKey: "user_id",
 });
