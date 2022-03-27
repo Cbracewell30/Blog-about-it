@@ -1,17 +1,5 @@
-  <h2>Create New Post</h2>
+<button type="submit" class="btn bg-info"><a href="/dashboard/post"> Add a post</a></button>
 
-  <form class="new-post-form">
-    <div>
-      <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" />
-    </div>
-    <div>
-      <label for="Post-text">Post</label>
-      <input id="text" name="post-text" />
-    </div>
-    <button type="submit" class="btn">Create</button>
-  </form>
-</section>
 
 {{#if posts.length}}
 <section>
@@ -28,4 +16,3 @@
 {{/if}}
 </main>
 
-<script src="/javascript/add-post.js"></script>

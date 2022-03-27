@@ -1,6 +1,8 @@
 {{> post-info post}}
+<div class="p-2"> {{post.post_text}} </div>
+<br class="p-2">
    {{#if loggedIn}}
-<form class="comment-form">
+<form class="comment-form p-2">
   <div>
     <textarea name="comment-body"></textarea>
   </div>
