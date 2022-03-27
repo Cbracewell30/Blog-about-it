@@ -6,12 +6,10 @@
   <form class="edit-post-form">
     <div>
       <input name="post-title" type="text" value="{{post.title}}" />
-      <span>({{post_title}})</span>
+      <span>{{post_title}}</span>
     </div>
     <div>
-      {{post.vote_count}}
-      {{format_plural "point" post.vote_count}}
-      by you on
+      posted by you on
       {{format_date post.created_at}}
       |
       <a href="/post/{{post.id}}">{{post.comments.length}}
@@ -31,3 +29,6 @@
     <button type="submit">add comment</button>
   </div>
 </form>
+
+<script src="/javascript/edit-post.js"></script>
+<script src="/javascript/delete-post.js"></script>
