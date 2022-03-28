@@ -13,6 +13,8 @@ This is a application that allows users to make profiles, after making a profilr
 * [Test](#test)
 * [Languages](#languages)
 * [Email](#Email)
+* [Live Application](#liveapplication)
+* [Screenshot](#screenshot)
   
 
 #### License
