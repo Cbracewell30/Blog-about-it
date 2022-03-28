@@ -44,7 +44,7 @@ Langues used in this project include JavaScript,HTML,CSS,ES6,Bootstrap,Node, Mys
 Feel free to reach me at chirsbracewell35@gmailcom for any questions regarding this project.
 
 
-#### Live application
+#### Live Application
 https://sleepy-sands-67875.herokuapp.com/
 
 #### Screenshot
